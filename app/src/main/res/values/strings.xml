@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RandomSelect</string>
+    <string name="action_settings">Settings</string>
+    <string name="buttonPickRandom">Pick Random</string>
+    <string name="strOutput">Sample Output here.</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
