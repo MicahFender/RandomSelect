@@ -1,5 +1,7 @@
 package com.example.micah.randomselect;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,13 +34,30 @@ public class MainActivity extends AppCompatActivity {
         btnPickRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int length = Data.getLength();
+                if (length <= 0){
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                    builder1.setMessage("Unable to find any data.  Please try again later.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Okay",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                } else {
                 int selection = -1; //Initializes the selection variable to prime the error check loop below.
                 while (selection < 0 || selection > Data.getLength()) {
 
                     selection = (int)(Math.random() * Data.getLength());  //Data.getLength will return a number >= 1 if there are items in the list which is zero indexed, so only simple multiplication is needed.
                 }
                 tvOutput.setText(Data.getData(selection));
-            }
+            }}
         });
 
         btnMap.setOnClickListener(new View.OnClickListener() {
