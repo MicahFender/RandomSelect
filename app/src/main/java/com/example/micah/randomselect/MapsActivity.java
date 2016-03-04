@@ -3,6 +3,7 @@ package com.example.micah.randomselect;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -78,27 +79,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
                     MapsActivity.this);
 
-// Setting Dialog Title
+            // Setting Dialog Title
             alertDialog2.setTitle("Network Error");
 
-// Setting Dialog Message
+            // Setting Dialog Message
             alertDialog2.setMessage("Unable to find GPS or network data.  Try enabling GPS on your device.");
 
-// Setting Icon to Dialog
+            // Setting Icon to Dialog
             alertDialog2.setIcon(R.drawable.ic_pause_dark);
 
-// Setting Positive "Yes" Btn
+            // Setting Positive "Yes" Btn
             alertDialog2.setPositiveButton("YES",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // Write your code here to execute after dialog
-                            Toast.makeText(getApplicationContext(),
-                                    "You clicked on YES", Toast.LENGTH_SHORT)
-                                    .show();
+                            Intent home = new Intent(MapsActivity.this, MainActivity.class);
+                            startActivity(home);
+
                         }
                     });
 
-// Showing Alert Dialog
+            // Showing Alert Dialog
             alertDialog2.show();
         }
     }
