@@ -1,6 +1,8 @@
 package com.example.micah.randomselect;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -8,6 +10,7 @@ import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -72,7 +75,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
         } else {
-// Show rationale and request permission.
+            AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
+                    MapsActivity.this);
+
+// Setting Dialog Title
+            alertDialog2.setTitle("Network Error");
+
+// Setting Dialog Message
+            alertDialog2.setMessage("Unable to find GPS or network data.  Try enabling GPS on your device.");
+
+// Setting Icon to Dialog
+            alertDialog2.setIcon(R.drawable.ic_pause_dark);
+
+// Setting Positive "Yes" Btn
+            alertDialog2.setPositiveButton("YES",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Write your code here to execute after dialog
+                            Toast.makeText(getApplicationContext(),
+                                    "You clicked on YES", Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    });
+
+// Showing Alert Dialog
+            alertDialog2.show();
         }
     }
 }
