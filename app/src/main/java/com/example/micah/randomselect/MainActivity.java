@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final TextView tvOutput = (TextView) findViewById(R.id.tvOutput);  //Sets reference to output text field
-        tvOutput.setText(""); //Changes the output text to empty for the initial run of app.
+       //final TextView tvOutput = (TextView) findViewById(R.id.tvOutput);  //Sets reference to output text field
+        //tvOutput.setText(""); //Changes the output text to empty for the initial run of app.
 
-        Button btnPickRandom =(Button) findViewById(R.id.btnPickRandom);
+        //Button btnPickRandom =(Button) findViewById(R.id.btnPickRandom);
         Button btnMap = (Button) findViewById(R.id.btnMap);
 
-        btnPickRandom.setOnClickListener(new View.OnClickListener() {
+        /*btnPickRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int length = Data.getLength();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 tvOutput.setText(Data.getData(selection));
             }}
-        });
+        });*/
 
         btnMap.setOnClickListener(new View.OnClickListener() {
 
