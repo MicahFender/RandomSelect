@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Micah on 2/6/2016.
+ * data is the name of a location
+ * LatLng is the latitude and longitude of the location
  */
 public class Data {
 

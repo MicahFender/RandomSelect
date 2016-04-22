@@ -1,28 +1,17 @@
 <LinearLayout xmlns:android2="http://schemas.android.com/apk/res/android"
-    android2:layout_width="wrap_content"
+    android2:layout_width="fill_parent"
     android2:layout_height="wrap_content"
     android2:orientation="vertical">
 
-    <LinearLayout
-        android2:layout_width="wrap_content"
-        android2:layout_height="wrap_content">
-
-    <EditText
-        android2:layout_width="300dp"
+    <Button
+        android2:layout_width="fill_parent"
         android2:layout_height="wrap_content"
-        android2:id="@+id/searchtf"
-        />
-
-        <Button
-            android2:layout_width="wrap_content"
-            android2:layout_height="wrap_content"
-            android2:text="Go"
-            android2:id="@+id/searchbtn"
-            android2:layout_gravity="right"
-            android2:background="?attr/colorPrimary"
-            android2:textColor="@android:color/white"
-            android2:onClick="onSearch" />
-    </LinearLayout>
+        android2:text="Again"
+        android2:id="@+id/btnAgain"
+        android2:layout_gravity="center_horizontal"
+        android2:background="?attr/colorPrimary"
+        android2:textColor="@android:color/white"
+        android2:onClick="onAgain"/>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -30,8 +19,11 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         tools:context="com.example.micah.randomselect.MapsActivity"
         android:layout_gravity="center_horizontal" />
+
+
+
 
 </LinearLayout>

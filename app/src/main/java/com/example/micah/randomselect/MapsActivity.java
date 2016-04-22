@@ -57,15 +57,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
 
+            //Enables the button to center on current location
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
 
             // Enable MyLocation Layer of Google Map
             googleMap.setMyLocationEnabled(true);
         }
         //End - my location
 
-
+        //Check for no data error.
         int length = Data.getLength();
         if (length <= 0){
             AlertDialog.Builder builder1 = new AlertDialog.Builder(MapsActivity.this);
@@ -89,41 +89,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 selection = (int) (Math.random() * Data.getLength());  //Data.getLength will return a number >= 1 if there are items in the list which is zero indexed, so only simple multiplication is needed.
             }
 
-            mMap.clear();
-            Marker marker = mMap.addMarker(new MarkerOptions().position(Data.getLatLng(selection)).title(Data.getData(selection)));
-            marker.showInfoWindow();
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(Data.getLatLng(selection)));
+            mMap.clear(); //Removes previous markers to ensure only one marker at a time.
+            Marker marker = mMap.addMarker(new MarkerOptions().position(Data.getLatLng(selection)).title(Data.getData(selection)));  //Places a new marker on the current item selected.
+            marker.showInfoWindow();  //Shows the name of location
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(Data.getLatLng(selection)));  //Moves camera to the current selection.
         }
     }
 
-    public void onSearch(View view) {
-        String location = "";
-        EditText location_tf = (EditText) findViewById(R.id.searchtf);
-        location = location_tf.getText().toString();
-
-        if(location.equals("")){
-            onMapReady(mMap);
-        }else if (location != null || !location.equals("")) {
-            List<Address> addressList = null;
-
-            Geocoder geocoder = new Geocoder(this);
-
-            try {
-                addressList = geocoder.getFromLocationName(location, 1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (addressList.isEmpty()) {
-                location_tf.setText("Please enter a valid location.");
-            } else {
-                Address address = addressList.get(0);
-                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                mMap.clear();
-                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
-                marker.showInfoWindow();
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
-            }
-        }
+    public void onAgain(View view){
+        onMapReady(mMap);
     }
 }
